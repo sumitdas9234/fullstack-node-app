@@ -24,11 +24,16 @@ def random_date(start, end, prop):
 
 
 def make_json(csvFilePath, jsonFilePath):
+    json_list = []
     with open(csvFilePath, encoding='utf-8') as csvf:
-        with open(jsonFilePath, 'w', encoding='utf-8') as jsonf:
-            csvReader = csv.DictReader(csvf)
-            for row in csvReader:
-                jsonf.write(json.dumps(row)+"\n")
+        csvReader = csv.DictReader(csvf)
+        for row in csvReader:
+            json_list.append(row)
+        csvf.close()
+
+    with open(jsonFilePath, 'w', encoding='utf-8') as jsonf:
+        jsonf.write(json.dumps(json_list))
+        jsonf.close()
 
 
 def read_csv_files(csv_file_path):
