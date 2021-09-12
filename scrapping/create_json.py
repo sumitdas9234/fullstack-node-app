@@ -90,13 +90,14 @@ def main():
 #                   Save to CSV Files
 #
 ########################################################
-    print(f"*  Creating Directory [ csv ]")
-    if not os.path.exists('csv'):
-        os.mkdir('csv')
-    print(f"*  Writing CSV files to [ csv ]")
-    write_csv_files('csv/students.csv', ['name','gender','id','dob','bg'], students)
-    write_csv_files('csv/teachers.csv', ['id','name','gender','age','email','phone','bg'], teachers)
-    write_csv_files('csv/parents.csv', ['name','gender','email','phone','occupation','parentOf'], parents)
+    path_to_csv = os.path.join(os.getcwd(), 'scrapping', 'csv')
+    print(f"*  Creating Directory [ {path_to_csv} ]")
+    if not os.path.exists(path_to_csv):
+        os.mkdir(path_to_csv)
+    print(f"*  Writing CSV files to [ {path_to_csv} ]")
+    write_csv_files(os.path.join(path_to_csv, 'students.csv'), ['name','gender','id','dob','bg'], students)
+    write_csv_files(os.path.join(path_to_csv, 'teachers.csv'), ['id','name','gender','age','email','phone','bg'], teachers)
+    write_csv_files(os.path.join(path_to_csv, 'parents.csv'), ['name','gender','email','phone','occupation','parentOf'], parents)
 
 
 ########################################################
@@ -107,9 +108,9 @@ def main():
     if not os.path.exists('json'):
         os.mkdir('json')
     print(f"*  Writing JSON files to [ json ]")
-    make_json('csv/students.csv', 'json/students.json')
-    make_json('csv/parents.csv', 'json/parents.json')
-    make_json('csv/teachers.csv', 'json/teachers.json')
+    make_json(os.path.join(path_to_csv, 'students.csv'), 'json/students.json')
+    make_json(os.path.join(path_to_csv, 'parents.csv'), 'json/parents.json')
+    make_json(os.path.join(path_to_csv, 'teachers.csv'), 'json/teachers.json')
     print(f"============== [ SUCCESS ] ===============")
 
 
