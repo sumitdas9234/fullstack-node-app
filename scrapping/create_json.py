@@ -95,9 +95,9 @@ def main():
     if not os.path.exists(path_to_csv):
         os.mkdir(path_to_csv)
     print(f"*  Writing CSV files to [ {path_to_csv} ]")
-    write_csv_files(os.path.join(path_to_csv, 'students.csv'), ['name','gender','id','dob','bg'], students)
-    write_csv_files(os.path.join(path_to_csv, 'teachers.csv'), ['id','name','gender','age','email','phone','bg'], teachers)
-    write_csv_files(os.path.join(path_to_csv, 'parents.csv'), ['name','gender','email','phone','occupation','parentOf'], parents)
+    write_csv_files(os.path.join(path_to_csv, 'students.csv'), ['name','gender','_id','dob','bg'], students)
+    write_csv_files(os.path.join(path_to_csv, 'teachers.csv'), ['_id','name','gender','age','email','phone','bg'], teachers)
+    write_csv_files(os.path.join(path_to_csv, 'parents.csv'), ['name','gender','email','phone','occupation','_id'], parents)
 
 
 ########################################################
