@@ -99,7 +99,7 @@ def main():
         image_details = [line.split()[-1] for line in pulled_image.stdout.decode('utf-8').strip().splitlines() if "Status" in line][0]
         print(f"  ✔ Pulled Docker Image:\t[ {image_details} ]")
 
-    run_image = subprocess.run(['docker', 'run', '--name', 'local-mongodb', '-d', '-p', '27017:27017', 'mongo:4.2.16-rc0'], shell=True)
+    run_image = subprocess.run(['docker', 'run', '--name', 'local-mongodb', '-d', '-p', '27017:27017', 'mongo:4.2.16-rc0'], capture_output=True)
     if run_image.returncode:
         sys.exit("Cannot Run Docker Container.")
     else:
