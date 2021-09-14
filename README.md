@@ -1,12 +1,8 @@
-# Scrapping & Parsing Data
+# Setting Up MongoDB locally & Inserting Documents
 ## Getting Started
-### Run the Python Script to create Dummy JSON, CSV Data
-> The raw files are present in the `scrapping/data/` directory in this repository.
-Run the following command to generate the dummy data.
-``` bash
-python scrapping/create_json.py scrapping/data
-```
-This should create the following directory structure
+> As a prerequisite, please install python >=3.5 and Docker Desktop
+
+If you're following along the tutorials, after running `git checkout mongodb`, you should have the following project structure.
 ```bash
 fullstack-node-app
 ├── LICENSE
@@ -15,6 +11,8 @@ fullstack-node-app
 │   ├── parents.json
 │   ├── students.json
 │   └── teachers.json
+├── mongodb
+│   └── setup.py
 └── scrapping
     ├── create_json.py
     ├── csv
@@ -27,11 +25,22 @@ fullstack-node-app
         └── teachers.csv
 ```
 
-## Next Steps
-Now that we have the `json` files, we will push the data to a MongoDB Instance.
+## Run the Python Script
+Run the following command to get the `MongoDB Client` for Python
+``` bash
+pip install pymongo --user
+```
 
->Checkout the `mongodb` branch and follow along the **README** in that branch.
+Now, we can run the script to set up the local MongoDB via Docker
+``` bash
+python mongodb/set_up.py ./json
+```
+
+## Next Steps
+Now that we have the MongoDB ready, we will move on and build a CRUD based backend in nodejs.
+
+>Checkout the `backend` branch and follow along the **README** in that branch.
 
 ```bash
-git checkout mongodb
+git checkout backend
 ```
