@@ -33,7 +33,7 @@ pip install pymongo --user
 
 Now, we can run the script to set up the local MongoDB via Docker
 ``` bash
-python mongodb/set_up.py ./json
+python mongodb/setup.py ./json
 ```
 
 ## Next Steps
