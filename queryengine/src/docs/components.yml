@@ -1,0 +1,123 @@
+components:
+  schemas:
+    Parent:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        occupation:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        gender:
+          type: string
+          enum: [Male, Female]
+      example:
+        name: Penelope Jones
+        gender: Female
+        email: p.jones@randatmail.com
+        phone: 388-7532-91
+        occupation: Jeweller
+        id: R003868
+    
+    Teacher:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        gender:
+          type: string
+          enum: [Male, Female]
+        bg:
+          type: string
+          enum: ['A', 'A-', 'B', 'B-', 'O', 'O-', 'AB', 'AB-']
+        age:
+          type: number
+      example:
+        name: Violet Andrews
+        gender: Female
+        age: 40,
+        email: v.andrews@randatmail.com
+        phone: 715-9189-34
+        bg: O
+        id: T002713
+
+    Student:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        dob:
+          type: date
+        gender:
+          type: string
+          enum: [Male, Female]
+        bg:
+          type: string
+          enum: ['A', 'A-', 'B', 'B-', 'O', 'O-', 'AB', 'AB-']
+      example:
+        name: Evelyn Jones
+        gender: Female
+        dob: 2008-03-12T00:00:00.000Z
+        bg: O
+        id: R003868
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+
+  responses:
+    DuplicateEmail:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 400
+            message: Bad Request
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 401
+            message: Please authenticate
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 403
+            message: Forbidden
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 404
+            message: Not found

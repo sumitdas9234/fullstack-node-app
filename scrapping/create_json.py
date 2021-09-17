@@ -22,7 +22,7 @@ def str_time_prop(start, end, time_format, prop):
 
 
 def random_date(start, end, prop):
-    return str_time_prop(start, end, '%d-%m-%Y', prop)
+    return str_time_prop(start, end, '%Y-%m-%d', prop)
 
 
 def make_json(csvFilePath, jsonFilePath):
@@ -77,7 +77,7 @@ def main():
     for idx, item in enumerate(random.sample(range(3000, 9099), 200)):
         parents[idx].append(f"R00{item}")
         students[idx].append(f"R00{item}")
-        students[idx].append(random_date("1-1-2008", "1-1-2009", random.random()))
+        students[idx].append(random_date("2008-01-01", "2009-01-01", random.random()))
         students[idx].append(random.choice(blood_groups))
         students[idx][1] = parents[idx][1]
         students[idx][:2] = [' '.join(students[idx][:2])]
@@ -86,6 +86,7 @@ def main():
     for idx, item in enumerate(random.sample(range(2000, 2999), 10)):
         teachers[idx] = [f"T00{item}"] + teachers[idx] + [random.choice(blood_groups)]
         teachers[idx][1:3] = [' '.join(teachers[idx][1:3])]
+        teachers[idx][3] = int(teachers[idx][3])
 
 
 ########################################################
